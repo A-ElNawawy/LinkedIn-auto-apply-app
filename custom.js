@@ -35,12 +35,14 @@ let wantedWords = ['react', 'remote'],
 
 function jobIsValid(){
   let counter = 0;
+  let missingWords = [];
   for (let i = 0; i < wantedWords.length; i++) {
-    find(wantedWords[i]) ? counter++ : null;
+    find(wantedWords[i]) ? counter++ : missingWords.push(wantedWords[i]);
   }
   if(counter === wantedWords.length){
     return true;
   }else{
+    alert("we miss: ", missingWords);
     return false;
   }
 }
