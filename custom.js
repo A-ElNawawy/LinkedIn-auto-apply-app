@@ -143,6 +143,15 @@ function fieldsIsValid(){
   return ! modal.innerHTML.toLowerCase().includes("Please enter a valid answer".toLowerCase());
 }
 
+function submitPageAppear(){
+  let followCompany = document.getElementById("follow-company-checkbox");
+  //alert("submitPageAppear() function executed");
+  if(followCompany){
+    return true;
+  }else{
+    return false;
+  }
+}
 function unFollowCompany(){
   let followCompany = document.getElementById("follow-company-checkbox");
   followCompany ? followCompany.checked = false : null;
