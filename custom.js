@@ -154,56 +154,57 @@ function submitPageAppear(){
 }
 function unFollowCompany(){
   let followCompany = document.getElementById("follow-company-checkbox");
-  followCompany ? followCompany.checked = false : null;
-  return followCompany;
+  followCompany.checked = false;
 }
 
+function clickActionButton(){
+  setTimeout(() => {
+    // if fields is full and no validation error exist
+    if(formIsReadyToClick() && fieldsIsValid()){
+      if(submitPageAppear() && !submitLocked){
+        unFollowCompany();
+        setTimeout(() => {
+          let actionButton = getButton();
+          console.log("submit clicked");
+          actionButton.click();
+        }, 1000);
+      }else{
+        let actionButton = getButton();
+        actionButton.click();
+      }
+    }
+    else{
+      console.log("not ready");
+    }
+  }, 500);
+}
+
+let submitLocked = false;
 window.onload = function(){
   setTimeout(function(){
     // get left and right sides of page
     let leftRail = document.getElementsByClassName("jobs-search__left-rail")[0];
-    let rightRail = document.getElementsByClassName("jobs-search__right-rail")[0];
     // when click on a job
     leftRail.onclick = function(){
       setTimeout(function(){
         if(jobIsValid() && jobIsClean()){
-          // if job is valid and clean click on apply
+          // if job is valid and clean click on apply button
           let applyButton = document.getElementsByClassName("jobs-apply-button")[0];
           applyButton.click();
-          window.onclick = function(){
-            setTimeout(() => {
-              if(formIsReadyToClick() && fieldsIsValid()){
-                console.log("ready");
-                if(unFollowCompany()){
-                  unFollowCompany();
-                  setTimeout(() => {
-                    let actionButton = getButton();
-                    actionButton.click();
-                  }, 500);
-                }else{
-                  let actionButton = getButton();
-                  actionButton.click();
-                }
-              }
-              else{
-                console.log("not ready");
-              //  alert("Validation Error row #163");
-              }
-            }, 500);
-          }
-          // if fields is full and no validation error exist
-          if(formIsReadyToClick() && fieldsIsValid()){
-            if(unFollowCompany()){
-              unFollowCompany();
-              setTimeout(() => {
-                let actionButton = getButton();
-                actionButton.click();
-              }, 500);
-            }else{
-              let actionButton = getButton();
-              actionButton.click();
+          // get modal
+          let modal = document.getElementsByClassName("jobs-easy-apply-modal")[0];
+          //console.log(modal.length);
+          modal.onclick = function (){
+            if(!submitLocked){
+              // we mean by ActionButton is buttons in modal [ next, review, submit ]
+              clickActionButton();
+              //console.log("modal.onclick executed", submitLocked);
             }
+            submitLocked = submitPageAppear();
           }
+          clickActionButton();
+          submitLocked = submitPageAppear();
+          //console.log("first click: ", submitLocked);
         }
       }, 1000);
     }
