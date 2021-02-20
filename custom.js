@@ -48,14 +48,14 @@ function jobIsValid(){
 }
 
 function jobIsClean(){
-  let restricted = [];
+  let restrictedWords = [];
   for (const word of notWantedWords) {
     if(find(word)){
-      restricted.push(word);
+      restrictedWords.push(word);
     }
   }
-  if(restricted.length !== 0){
-    alert(restricted);
+  if(restrictedWords.length !== 0){
+    alert(restrictedWords);
     return false;
   }
   return true;
