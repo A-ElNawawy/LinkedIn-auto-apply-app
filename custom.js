@@ -1,4 +1,11 @@
-let wantedWords = ['react', 'remote'],
+let wantedWords = [
+  'react',
+  'html',
+  'css',
+  'js',
+  'javascript',
+  'remote',
+],
   notWantedWords = [
     //'3+',
     '4+',
@@ -23,13 +30,18 @@ let wantedWords = ['react', 'remote'],
     //'Angular',
     //'vue',
     'wordpress',
+    'Python',
     'full stack',
     'full-stack',
     'stack',
     'react native',
     'react-native',
+    'redux',
     'native',
     'salesforce',
+    'Shopify',
+    'C#',
+    'php',
     'Israel',
   ];
 
@@ -42,7 +54,7 @@ function jobIsValid(){
   if(counter === wantedWords.length){
     return true;
   }else{
-    alert("we miss: ", missingWords);
+    alert(missingWords);
     return false;
   }
 }
