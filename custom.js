@@ -52,6 +52,33 @@ function jobIsValid() {
   }
 }
 
+/*v1.1 */
+//*****************************
+function highlightWantedWords() {
+  for (let i = 0; i < wantedWords.length; i++) {
+    let rightRail = document.getElementsByClassName(
+      "jobs-search__right-rail"
+    )[0];
+    let regExp = new RegExp(wantedWords[i], "gi");
+    alert(rightRail.innerHTML.match(regExp));
+  }
+  /*
+  let counter = 0;
+  let missingWords = [];
+  for (let i = 0; i < wantedWords.length; i++) {
+    find(wantedWords[i]) ? counter++ : missingWords.push(wantedWords[i]);
+  }
+  if (counter === wantedWords.length) {
+    return true;
+  } else {
+    alert(missingWords);
+    return false;
+  }
+  */
+}
+//*****************************
+/*v1.1 */
+
 function jobIsClean() {
   let restrictedWords = [];
   for (const word of notWantedWords) {
