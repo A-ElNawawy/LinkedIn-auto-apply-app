@@ -36,6 +36,8 @@ let wantedWords = ["react", "html", "css", "js", "javascript", "remote"],
     "C#",
     "php",
     "Israel",
+    "passport",
+    "visa",
   ];
 
 function jobIsValid() {
