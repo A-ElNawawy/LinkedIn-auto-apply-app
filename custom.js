@@ -1,3 +1,6 @@
+//Must be Authorized to Work in United States without any sponsorship
+//US Remote
+
 let wantedWords = ["react", "html", "css", "js", "javascript", "remote"],
   notWantedWords = [
     //'3+',
